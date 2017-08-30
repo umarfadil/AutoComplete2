@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.umarfadil.autocompletetextview.MainActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+        <AutoCompleteTextView
+            android:id="@+id/at_klasifikasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:hint="Klasifikasi"
+            android:inputType="text"
+            android:padding="5dp"
+            android:background="@android:color/transparent"
+            android:ems="10" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnCek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auto"
+        android:text="CEK"
+        android:onClick="setHasil"/>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/btnCek"
+        android:id="@+id/hasilKlasifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/hasilKlasifikasi"
+        android:id="@+id/kodeKlasifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>
