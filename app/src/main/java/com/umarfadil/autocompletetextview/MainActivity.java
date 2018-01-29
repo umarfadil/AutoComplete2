@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Klasifikasi> mKlasifikasiArrayList;
     private Klasifikasi klasifikasi;
     private KlasifikasiAdapter klasifikasiAdapter;
+    private Klasifikasi mSelectedKlasifikasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,21 @@ public class MainActivity extends AppCompatActivity {
 
         //AutoCompleteTextView
         mKlasifikasiArrayList = new ArrayList<Klasifikasi>();
+
+        at_klasifikasi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (klasifikasiAdapter.getItem(i) == null){
+                    return;
+                }
+
+                mSelectedKlasifikasi = klasifikasiAdapter.getItem(i);
+                hasilKlasifikasi.setText(mSelectedKlasifikasi.getName());
+                kodeKlasifikasi.setText(mSelectedKlasifikasi.getKode());
+
+                Toast.makeText(MainActivity.this, klasifikasiAdapter.getItem(i).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
         loadKlasifikasi(mKlasifikasiArrayList);
     }
 
@@ -105,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setHasil(View view) {
-        hasilKlasifikasi.setText(klasifikasi.getName());
-        kodeKlasifikasi.setText(klasifikasi.getName());
+        hasilKlasifikasi.setText(mSelectedKlasifikasi.getName());
+        kodeKlasifikasi.setText(mSelectedKlasifikasi.getKode());
     }
 }
